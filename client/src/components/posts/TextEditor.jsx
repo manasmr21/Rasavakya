@@ -147,7 +147,7 @@ function TextEditor() {
         return;
       }
 
-      const data = await fetch("http://localhost:3000/posts", {
+      const data = await fetch("https://rasavakya.vercel.app/posts", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

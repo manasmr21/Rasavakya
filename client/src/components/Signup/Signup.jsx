@@ -55,7 +55,7 @@ function Signup() {
     } else {
       try {
         setDisabled(true);
-        const data = await fetch("http://localhost:3000/signup", {
+        const data = await fetch("https://rasavakya.vercel.app/signup", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

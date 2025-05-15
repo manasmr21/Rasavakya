@@ -22,7 +22,7 @@ function ForgotPassword() {
         return
       }
 
-      const data = await fetch("http://localhost:3000/reset-password", {
+      const data = await fetch("https://rasavakya.vercel.app/reset-password", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -16,7 +16,8 @@ import Footer from "./components/Footer/Footer";
 import PostComponents from "./components/PostCompnents/PostComponents";
 import About from "./components/About/About"
 import "./App.css"
-import ContactForm from "./components/Contact Form/ContactForm";
+// import ContactForm from "./components/Contact Form/ContactForm";
+
 
 function App() {
 

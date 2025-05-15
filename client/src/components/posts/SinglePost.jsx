@@ -31,7 +31,7 @@ function SinglePost() {
   // Like a post
   const likePost = async () => {
     try {
-      const data = await fetch("http://localhost:3000/like", {
+      const data = await fetch("https://rasavakya.vercel.app/like", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -63,7 +63,7 @@ function SinglePost() {
   // Comment on the post
   const commentOnPost = async () => {
     try {
-      const data = await fetch("http://localhost:3000/comment", {
+      const data = await fetch("https://rasavakya.vercel.app/comment", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

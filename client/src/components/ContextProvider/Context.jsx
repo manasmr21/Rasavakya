@@ -13,7 +13,7 @@ function Context({ children }) {
   //fetch all liked and commented posts
   const likedAndCommented = async (token) => {
     try {
-      const data = await fetch("http://localhost:3000/liked-commented", {
+      const data = await fetch("https://rasavakya.vercel.app/liked-commented", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -34,7 +34,7 @@ function Context({ children }) {
   //fetch all posts
   const fetchPost = async () => {
     try {
-      const data = await fetch("http://localhost:3000/fetch-all-posts", {
+      const data = await fetch("https://rasavakya.vercel.app/fetch-all-posts", {
         method: "GET",
       });
 
@@ -54,9 +54,10 @@ function Context({ children }) {
     fetchPost();
   }, []);
 
+  
   const validateUser = async (token) => {
     try {
-      const data = await fetch("http://localhost:3000/validateuser", {
+      const data = await fetch("https://rasavakya.vercel.app/validateuser", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

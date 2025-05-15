@@ -49,7 +49,7 @@ function Login() {
     } else {
       try {
         setDisabled(true);
-        const data = await fetch("http://localhost:3000/login", {
+        const data = await fetch("https://rasavakya.vercel.app/login", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
