@@ -26,7 +26,7 @@ function Home() {
         "Content-Type" : "application/json"
       },
       body: {
-        data: JSON.stringify({message})
+        data: JSON.stringify(message)
       }
     })
 
