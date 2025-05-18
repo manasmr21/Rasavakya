@@ -23,8 +23,8 @@ app.use(express.json());
 
 app.use(router);
 
-app.get("/:message", (req, res) => {
-  res.send(`${req.params.message}`);
+app.get("/", (req, res) => {
+  res.send("Backend is running");
 });
 
 connectToDb()
