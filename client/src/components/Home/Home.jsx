@@ -6,7 +6,9 @@ import ContactForm from "../Contact Form/ContactForm";
 function Home() {
   const postsRef = useRef(null); // Create a ref to the Posts component
   const contactRef = useRef(null);
-  const message = "bhag bhosdike"
+  const message = {
+    msg: "Something"
+  }
   const scrollToContact = ()=>{
     if(contactRef.current){
       contactRef.current.scrollIntoView({behavior : "smooth"})
@@ -20,15 +22,15 @@ function Home() {
   };
 
   const somethingIDK = async()=>{
-    const response = await fetch("https://rasavakya-backend.vercel.app/louda", {
+    const data = await fetch("https://rasavakya-backend.vercel.app/louda", {
       method: "POST",
       headers:{
         "Content-Type" : "application/json"
       },
-      body: {
-        data: JSON.stringify(message)
-      }
+      body : JSON.stringify({message})
     })
+
+    const response = data.json();
 
     alert(response.message);
 
