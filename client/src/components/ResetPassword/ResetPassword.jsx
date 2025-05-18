@@ -42,7 +42,7 @@ function ResetPassword() {
         });
       } else {
         const data = await fetch(
-          `https://rasavakya.vercel.app/reset-password/${token}`,
+          `https://rasavakya-backend.vercel.app/reset-password/${token}`,
           {
             method: "POST",
             headers: {

@@ -55,7 +55,7 @@ function Signup() {
     } else {
       try {
         setDisabled(true);
-        const data = await fetch("https://rasavakya.vercel.app/signup", {
+        const data = await fetch("https://rasavakya-backend.vercel.app/signup", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

@@ -38,7 +38,7 @@ function Otp() {
         return;
       }
 
-      const data = await fetch("https://rasavakya.vercel.app/verify-user", {
+      const data = await fetch("https://rasavakya-backend.vercel.app/verify-user", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -73,7 +73,7 @@ function Otp() {
 
   const resentOTP = async () => {
     try {
-      const data = await fetch("https://rasavakya.vercel.app/signup", {
+      const data = await fetch("https://rasavakya-backend.vercel.app/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

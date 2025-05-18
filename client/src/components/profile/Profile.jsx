@@ -38,7 +38,7 @@ function Profile() {
   const handleLogOutUser = async () => {
     let token = localStorage.getItem("userDataToken");
     try {
-      const data = await fetch("https://rasavakya.vercel.app/logout", {
+      const data = await fetch("https://rasavakya-backend.vercel.app/logout", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -68,7 +68,7 @@ function Profile() {
   const fetchUser = async () => {
     try {
       const data = await fetch(
-        `https://rasavakya.vercel.app/fetch-user?userId=${userId}`,
+        `https://rasavakya-backend.vercel.app/fetch-user?userId=${userId}`,
         {
           method: "GET",
           headers: {
@@ -94,7 +94,7 @@ function Profile() {
   //Delete a post
   const deletePost = async (postId) => {
     try {
-      const data = await fetch("https://rasavakya.vercel.app/delete-posts", {
+      const data = await fetch("https://rasavakya-backend.vercel.app/delete-posts", {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -130,7 +130,7 @@ function Profile() {
   const resetPassword = async () => {
     try {
       const useremail = userData?.useremail;
-      const data = await fetch("https://rasavakya.vercel.app/reset-password", {
+      const data = await fetch("https://rasavakya-backend.vercel.app/reset-password", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

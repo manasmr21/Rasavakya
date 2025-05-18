@@ -35,7 +35,7 @@ function PostComponents() {
       if (searchResult.length > 0) {
         setPoemArray(searchResult);
       } else {
-        const data = await fetch("https://rasavakya.vercel.app/search-post", {
+        const data = await fetch("https://rasavakya-backend.vercel.app/search-post", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
