@@ -6,12 +6,21 @@ const router = require("./routes/routers.js");
 const app = express();
 const port = 3000;
 
+// CORS configuration
+const corsOptions = {
+  origin: "https://rasavakya-frontend.vercel.app",
+  credentials: true
+};
+
+// Apply CORS middleware
+app.use(cors(corsOptions));
+
+// Handle preflight OPTIONS requests
+app.options("*", cors(corsOptions));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(cors({
-    origin: "https://rasavakya-frontend.vercel.app"
-}))
+
 app.use(router);
 
 app.get("/:message", (req, res) => {
