@@ -32,7 +32,7 @@ function Home() {
 
     const response = data.json();
 
-    alert(response.message);
+    alert(response.message.msg);
 
   }
 
