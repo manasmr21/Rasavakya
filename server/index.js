@@ -10,7 +10,7 @@ const port = 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors({
-    origin: "https://rasavakya-frontend.vercel.app/",
+    origin: "https://rasavakya-frontend.vercel.app",
     credentials: true
 }))
 app.use(router);
