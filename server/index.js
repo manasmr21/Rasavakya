@@ -8,7 +8,8 @@ const port = 3000;
 
 // CORS configuration
 const corsOptions = {
-  origin: "https://rasavakya-frontend.vercel.app",
+  // origin: "https://rasavakya-frontend.vercel.app",
+  origin : "*",
   credentials: true
 };
 
