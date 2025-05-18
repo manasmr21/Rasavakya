@@ -293,7 +293,7 @@ exports.forgotPassword = async (req, res) => {
       await userResetPassword.save();
     }
 
-    const link = `http://localhost:5173/reset-password/${resetPasswordCode}`;
+    const link = `https://rasavakya-frontend.vercel.app/reset-password/${resetPasswordCode}`;
 
     sendResetPasswordLink(useremail, link);
 
