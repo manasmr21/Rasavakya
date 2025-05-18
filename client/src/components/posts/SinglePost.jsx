@@ -131,8 +131,8 @@ function SinglePost() {
               <p className="italic text-gray-400">by {thePost?.author || "Anonymous"} </p>
             </div>
 
-            <div className="mt-5 mb-10">
-              <p id="post" className="grid place-items-center"></p>
+            <div className="mt-5 mb-10 text-wrap">
+              <p id="post" className="grid place-items-center text-wrap"></p>
             </div>
             <div className="flex justify-center items-center">
               {thePost?.tags?.map((tag) => (
