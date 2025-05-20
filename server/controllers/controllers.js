@@ -109,7 +109,7 @@ exports.signup = async (req, res) => {
         const newVerificationCode = new userVerificationCodes({
           useremail,
           verificationCode,
-          verificationCodeExpiresAt: Date.now() + 60 * 1000,
+          verificationCodeExpiresAt: Date.now() +10 * 60 * 1000,
         });
         await newVerificationCode.save();
       }
