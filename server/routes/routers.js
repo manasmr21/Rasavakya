@@ -13,7 +13,6 @@ router.get("/logout", authenticate, controller.logoutUser);
 router.post("/reset-password", controller.forgotPassword);
 router.post("/reset-password/:token", controller.resetPassword);
 router.get("/fetch-user", controller.fetchUser);
-router.post("/louda", controller.loudeTeLashan);
 
 
 //Post Routes

@@ -370,18 +370,3 @@ exports.fetchUser = async(req, res)=>{
     return res.status(400).json({success : false, error : error.message});
   }
 }
-
-
-//Louda lashan
-exports.loudeTeLashan = async(req,res)=>{
-  try {
-
-    const {message} = req.body
-    
-    const msg = message.message
-    res.status(200).json({message:msg });
-
-  } catch (error) {
-    return res.status(400).json({success : false, error : error.message});
-  }
-}

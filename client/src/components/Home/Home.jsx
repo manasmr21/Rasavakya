@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import Posts from "../posts/Posts";
 import "./home.css";
 import ContactForm from "../Contact Form/ContactForm";
@@ -6,9 +6,6 @@ import ContactForm from "../Contact Form/ContactForm";
 function Home() {
   const postsRef = useRef(null); // Create a ref to the Posts component
   const contactRef = useRef(null);
-  const message = {
-    msg: "Something"
-  }
   const scrollToContact = ()=>{
     if(contactRef.current){
       contactRef.current.scrollIntoView({behavior : "smooth"})
@@ -21,20 +18,6 @@ function Home() {
     }
   };
 
-  const somethingIDK = async()=>{
-    const data = await fetch("https://rasavakya-backend.vercel.app/louda", {
-      method: "POST",
-      headers:{
-        "Content-Type" : "application/json"
-      },
-      body : JSON.stringify({message})
-    })
-
-    const response = data.json();
-
-    alert(response.message.msg);
-
-  }
 
   return (
     <>
@@ -55,7 +38,7 @@ function Home() {
             Explore
           </button>
           <button
-            onClick={somethingIDK}
+            onClick={scrollToContact}
             className=" mx-2 bg-[orangered] hover:bg-transparent hover:text-[orangered] border border-[orangered] transition text-white rounded p-3 text-lg font-medium"
           >
             Contact
