@@ -2,7 +2,7 @@ const nodemailer = require("nodemailer");
 const dotenv = require("dotenv");
 
 // Make sure .env is loaded correctly in production
-dotenv.config({path: "../.env"}); // <-- No path needed if .env is in root
+dotenv.config(); // <-- No path needed if .env is in root
 
 const senderMail = process.env.mail;
 const senderPass = process.env.password;
