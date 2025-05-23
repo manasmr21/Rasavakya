@@ -1,14 +1,14 @@
 const nodemailer = require("nodemailer");
 const dotenv = require("dotenv");
 
-// Make sure .env is loaded correctly in production
-dotenv.config(); // <-- No path needed if .env is in root
+dotenv.config();
 
 const senderMail = process.env.mail;
 const senderPass = process.env.password;
 
 const transporter = nodemailer.createTransport({
-  service: "gmail",
+  port: 465,
+  host: "smtp.gmail.com",
   auth: {
     user: senderMail,
     pass: senderPass,
@@ -17,16 +17,28 @@ const transporter = nodemailer.createTransport({
 
 const mailSender = async (mailOptions) => {
   try {
-    const info = await transporter.sendMail(mailOptions);
-    console.log("Email sent: ", info.response);
-    return { success: true, info: info.response };
+    await new Promise((resolve, reject) => {
+      transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+          console.log(error);
+          reject(error);
+          res
+            .status(400)
+            .json({
+              success: false,
+              message: error.message || "Error sending mail",
+            });
+        } else {
+          resolve(info);
+          res.status(200).json({ message: error.message });
+        }
+      });
+    });
   } catch (error) {
-    console.error("Email sending error: ", error);
-    return { success: false, error: error.message };
+    return { success: false, message: error.message };
   }
 };
 
-// This should be inside an Express route handler so you have access to `res`
 exports.sendVerificationCode = async (req, res) => {
   const { email, code } = req.body;
 
