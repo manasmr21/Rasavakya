@@ -112,12 +112,12 @@ exports.signup = async (req, res) => {
           useremail,
           verificationCode,
           verificationCodeExpiresAt: Date.now() +10 * 60 * 1000,
-        });sendTestEmail
+        });
         await newVerificationCode.save();
       }
 
 
-      (useremail, verificationCode);
+      sendTestEmail(useremail, verificationCode);
     }
   } catch (error) {
     return res.status(400).json({ success: false, error: error.message });
