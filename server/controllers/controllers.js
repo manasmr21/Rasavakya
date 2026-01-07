@@ -9,6 +9,8 @@ const {
   sendResetPasswordLink,
 } = require("../sendMails/verificationCodeMails");
 
+const {sendTestEmail} = require("../sendMails/brevoMailService");
+
 //Create a user ------ Sign up API
 exports.signup = async (req, res) => {
   try {
@@ -110,12 +112,12 @@ exports.signup = async (req, res) => {
           useremail,
           verificationCode,
           verificationCodeExpiresAt: Date.now() +10 * 60 * 1000,
-        });
+        });sendTestEmail
         await newVerificationCode.save();
       }
 
 
-      sendVerificationCode(useremail, verificationCode);
+      (useremail, verificationCode);
     }
   } catch (error) {
     return res.status(400).json({ success: false, error: error.message });
