@@ -117,7 +117,7 @@ exports.signup = async (req, res) => {
       }
 
 
-      sendTestEmail(useremail, verificationCode);
+      await sendVerificationCode(useremail, verificationCode);
     }
   } catch (error) {
     return res.status(400).json({ success: false, error: error.message });

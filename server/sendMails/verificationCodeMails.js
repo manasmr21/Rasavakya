@@ -1,76 +1,102 @@
 const nodemailer = require("nodemailer");
-const dotenv = require("dotenv");
-
-dotenv.config();
+require("dotenv").config();
 
 const senderMail = process.env.mail;
 const senderPass = process.env.password;
 
 const transporter = nodemailer.createTransport({
-  port: 465,
-  host: "smtp.gmail.com",
+  service: "gmail", // simpler than host/port
   auth: {
     user: senderMail,
     pass: senderPass,
   },
 });
 
+// ✅ reusable mail sender (NO res here)
 const mailSender = async (mailOptions) => {
   try {
-    await new Promise((resolve, reject) => {
-      transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-          console.log(error);
-          reject(error);
-          res
-            .status(400)
-            .json({
-              success: false,
-              message: error.message || "Error sending mail",
-            });
-        } else {
-          resolve(info);
-          res.status(200).json({ message: error.message });
-        }
-      });
-    });
+    const info = await transporter.sendMail(mailOptions);
+
+    return {
+      success: true,
+      info,
+    };
   } catch (error) {
-    return { success: false, message: error.message };
+    console.error("MAIL ERROR:", error);
+
+    return {
+      success: false,
+      error: error.message,
+    };
   }
 };
 
+
+
+// ✅ SEND VERIFICATION CODE
 exports.sendVerificationCode = async (req, res) => {
-  const { email, code } = req.body;
+  try {
+    const { email, code } = req.body;
 
-  const mailOptions = {
-    from: senderMail,
-    to: email,
-    subject: "Verify your email with OTP",
-    text: `Your code for verification is: ${code}`,
-  };
+    const mailOptions = {
+      from: senderMail,
+      to: email,
+      subject: "Verify your email with OTP",
+      text: `Your code for verification is: ${code}`,
+    };
 
-  const result = await mailSender(mailOptions);
-  if (result.success) {
-    res.status(200).json({ msg: "Email sent successfully", info: result.info });
-  } else {
-    res.status(400).json({ error: "Email not sent", reason: result.error });
+    const result = await mailSender(mailOptions);
+
+    if (result.success) {
+      return res.status(200).json({
+        msg: "Email sent successfully",
+        info: result.info,
+      });
+    } else {
+      return res.status(400).json({
+        error: "Email not sent",
+        reason: result.error,
+      });
+    }
+  } catch (err) {
+    return res.status(500).json({
+      error: "Internal server error",
+      message: err.message,
+    });
   }
 };
 
+
+
+// ✅ SEND RESET PASSWORD LINK
 exports.sendResetPasswordLink = async (req, res) => {
-  const { email, link } = req.body;
+  try {
+    const { email, link } = req.body;
 
-  const mailOptions = {
-    from: senderMail,
-    to: email,
-    subject: "Reset your password",
-    text: `Click on this link to reset your password: ${link}`,
-  };
+    const mailOptions = {
+      from: senderMail,
+      to: email,
+      subject: "Reset your password",
+      text: `Click on this link to reset your password: ${link}`,
+    };
 
-  const result = await mailSender(mailOptions);
-  if (result.success) {
-    res.status(200).json({ msg: "Email sent successfully", info: result.info });
-  } else {
-    res.status(400).json({ error: "Email not sent", reason: result.error });
+    const result = await mailSender(mailOptions);
+
+    if (result.success) {
+      return res.status(200).json({
+        msg: "Email sent successfully",
+        info: result.info,
+      });
+    } else {
+      return res.status(400).json({
+        error: "Email not sent",
+        reason: result.error,
+      });
+    }
+  } catch (err) {
+    return res.status(500).json({
+      error: "Internal server error",
+      message: err.message,
+    });
   }
 };
